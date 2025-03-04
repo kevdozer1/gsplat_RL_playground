@@ -1,0 +1,53 @@
+# Config file for PLAYGROUND environment
+
+# Environment settings
+environment:
+  max_episode_steps: 1000
+  reward_distance_scale: -1.0
+  reward_pushing_scale: -2.0
+  reward_close_bonus: 1.0
+  reward_success_bonus: 10.0
+  reward_close_threshold: 0.05
+  reward_success_threshold: 0.1
+  
+# Robot settings
+robot:
+  urdf_path: "kuka_iiwa/model.urdf"
+  end_effector_link: "lbr_iiwa_link_7"
+  controlled_joints: 4
+  position_control:
+    force: 500
+    max_velocity: 1
+    
+# Object settings
+object:
+  type: "cube"
+  urdf_path: "cube.urdf"
+  scale: 0.05
+  initial_position: [0.5, 0, 0.05]
+  position_randomization: 0.1  # Random offset range for initial position
+  
+# Target settings
+target:
+  position: [1.5, 0, 0.5]
+  visualization: true
+  visual_color: [0, 1, 0, 0.7]
+  radius: 0.05
+  
+# Training settings
+training:
+  algorithm: "PPO"
+  total_timesteps: 1000000
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  entropy_coefficient: 0.0
+  
+# Visualization settings
+visualization:
+  fps: 240  # Frames per second for visualization
+  pause_between_episodes: 1.0  # Seconds to pause between episodes when visualizing
